@@ -1,11 +1,11 @@
 import { hashSync } from "bcryptjs";
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./orderEntity";
 import { Room } from "./roomsEntity";
 
 @Entity('employees')
 export class Employee {
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()
