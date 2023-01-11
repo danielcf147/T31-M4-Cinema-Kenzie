@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Employee } from "./employeeEntity";
 import { Food } from "./foodEntity";
 import { User } from "./userEntity";
@@ -6,7 +6,7 @@ import { User } from "./userEntity";
 @Entity("orders")
 export class Order {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()
@@ -21,6 +21,6 @@ export class Order {
     @OneToOne(() => User, user => user.order)
     user: User
 
-    @ManyToMany(() => Employee , employee => employee.order)
+    @ManyToMany(() => Employee, employee => employee.order)
     employee: Employee[]
 }

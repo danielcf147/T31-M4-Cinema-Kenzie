@@ -7,6 +7,7 @@ import {
   OneToMany,
   OneToOne,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Food } from "./foodEntity";
 import { Order } from "./orderEntity";
@@ -14,7 +15,7 @@ import { Room } from "./roomsEntity";
 
 @Entity("users")
 export class User {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
@@ -41,7 +42,7 @@ export class User {
   @OneToMany(() => Room, (room) => room.user)
   room: Room[];
 
-  @OneToOne(() => Order , order => order.user)
+  @OneToOne(() => Order, order => order.user)
   order: Order
 
   @BeforeUpdate()

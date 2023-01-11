@@ -1,16 +1,16 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Movie } from "./moviesEntity";
 
 @Entity("categoryMovie")
 
 export class CategoryMovie {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
     name: string
 
-    @OneToMany(() => Movie , movies => movies.categoryMovie)
+    @OneToMany(() => Movie, movies => movies.categoryMovie)
     movies: Movie[]
 }

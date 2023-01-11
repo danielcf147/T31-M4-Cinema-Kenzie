@@ -1,17 +1,17 @@
 import { hashSync } from "bcryptjs";
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./orderEntity";
 import { Room } from "./roomsEntity";
 
 @Entity('employees')
 export class Employee {
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()
     name: string
 
-    @Column({unique: true})
+    @Column({ unique: true })
     registration: string
 
     @Column()
@@ -20,7 +20,7 @@ export class Employee {
     @Column()
     isAdm: boolean
 
-    @Column({default: true})
+    @Column({ default: true })
     isActive: boolean
 
     @Column()
@@ -38,10 +38,10 @@ export class Employee {
 
     @ManyToMany(() => Order, order => order.employee)
     order: Order[]
-    
+
     @BeforeUpdate()
     @BeforeInsert()
-    hashPassword(){
+    hashPassword() {
         this.password = hashSync(this.password, 10)
     }
 

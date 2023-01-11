@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { CategoryMovie } from "./categoryMoviesEntity";
 import { Room } from "./roomsEntity";
 import { Ticket } from "./ticketsEntity";
@@ -6,7 +6,7 @@ import { Ticket } from "./ticketsEntity";
 @Entity('movie')
 export class Movie {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
@@ -18,16 +18,16 @@ export class Movie {
     @Column()
     synopsis: string;
 
-    @Column({type: "date"})
+    @Column({ type: "date" })
     release_date: string
 
     @ManyToOne(() => CategoryMovie, (category) => category.movies)
     categoryMovie: CategoryMovie
 
-    @ManyToMany(() => Room , room => room.movie)
+    @ManyToMany(() => Room, room => room.movie)
     @JoinTable()
     rooms: Room[]
 
-    @OneToMany(() => Ticket , tickets => tickets.movie)
+    @OneToMany(() => Ticket, tickets => tickets.movie)
     tickets: Ticket[]
 }
