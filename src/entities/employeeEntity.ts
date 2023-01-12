@@ -1,6 +1,16 @@
 import { hashSync } from "bcryptjs";
 
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 import { Order } from "./orderEntity";
 import { Room } from "./roomsEntity";
@@ -28,13 +38,11 @@ export class Employee {
   @Column()
   password: string;
 
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @CreateDateColumn()
-    createdAt: Date
-
-    @UpdateDateColumn()
-    updatedAt: Date
-
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ManyToMany(() => Room, (room) => room.employee)
   @JoinTable()

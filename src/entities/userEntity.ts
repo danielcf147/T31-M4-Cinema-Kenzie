@@ -34,14 +34,14 @@ export class User {
   @Column()
   cpf: string;
 
-  @Column({default: true})
-  isActive: boolean
+  @Column({ default: true })
+  isActive: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt: Date;
 
   @OneToMany(() => Food, (food) => food.users)
   food: Food[];
@@ -49,8 +49,8 @@ export class User {
   @OneToMany(() => Room, (room) => room.user)
   room: Room[];
 
-  @OneToOne(() => Order , order => order.user)
-  order: Order
+  @OneToOne(() => Order, (order) => order.user)
+  order: Order;
 
   @BeforeUpdate()
   @BeforeInsert()
