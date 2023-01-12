@@ -7,6 +7,7 @@ import { handleError } from "./error";
 import { moviesRouters } from "./routes/Movies/movies.Routes";
 import { categoryMovieRouters } from "./routes/CategoryMovies/categoryMovies.Routes";
 import employeeRouter from "./routes/Employee/employee.routes";
+import { productsRouters } from "./routes/Products/products.Routes";
 
 
 const app = express();
@@ -18,6 +19,7 @@ app.use("/employee", employeeRouter);
 app.use('/rooms', roomRoute)
 app.use("/movies", moviesRouters);
 app.use("/categories/movies", categoryMovieRouters);
+app.use("/products", productsRouters)
 
 app.use(handleError);
 
