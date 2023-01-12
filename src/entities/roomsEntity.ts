@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
 import { Employee } from "./employeeEntity";
 import { Movie } from "./moviesEntity";
 import { Ticket } from "./ticketsEntity";

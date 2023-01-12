@@ -1,4 +1,5 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
 import { CategoryFood } from "./categoryFoodEntity";
 import { Order } from "./orderEntity";
 import { User } from "./userEntity";

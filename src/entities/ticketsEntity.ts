@@ -1,4 +1,5 @@
-import { Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
 import { Movie } from "./moviesEntity";
 import { Room } from "./roomsEntity";
 

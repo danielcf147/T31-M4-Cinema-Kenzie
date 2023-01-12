@@ -1,4 +1,5 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
 import { CategoryMovie } from "./categoryMoviesEntity";
 import { Room } from "./roomsEntity";
 import { Ticket } from "./ticketsEntity";

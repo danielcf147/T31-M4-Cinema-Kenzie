@@ -1,48 +1,69 @@
 import { hashSync } from "bcryptjs";
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+
+
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+
+
 import { Order } from "./orderEntity";
 import { Room } from "./roomsEntity";
 
-@Entity('employees')
+@Entity("employees")
 export class Employee {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
 
-    @Column()
-    name: string
+@PrimaryGeneratedColumn("uuid")
+id: string;
 
-    @Column({ unique: true })
-    registration: string
 
-    @Column()
-    age: number
+  @Column()
+  name: string;
 
-    @Column()
-    isAdm: boolean
 
-    @Column({ default: true })
-    isActive: boolean
+  @Column({ unique: true })
+  registration: string;
 
-    @Column()
-    password: string
 
-    @Column()
-    createdAt: Date
+  @Column()
+  age: number;
 
-    @Column()
-    updatedAt: Date
+  @Column()
+  isAdm: boolean;
 
-    @ManyToMany(() => Room, room => room.employee)
-    @JoinTable()
-    rooms: Room[]
 
-    @ManyToMany(() => Order, order => order.employee)
-    order: Order[]
+  @Column({ default: true })
+  isActive: boolean;
 
-    @BeforeUpdate()
-    @BeforeInsert()
-    hashPassword() {
-        this.password = hashSync(this.password, 10)
-    }
 
+  @Column()
+  password: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @ManyToMany(() => Room, (room) => room.employee)
+  @JoinTable()
+  rooms: Room[];
+
+
+  @ManyToMany(() => Order, (order) => order.employee)
+  order: Order[];
+
+
+  @BeforeUpdate()
+  @BeforeInsert()
+  hashPassword() {
+    this.password = hashSync(this.password, 10);
+  }
 }

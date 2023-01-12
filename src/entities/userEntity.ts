@@ -3,11 +3,12 @@ import {
   BeforeInsert,
   BeforeUpdate,
   Column,
+  CreateDateColumn,
   Entity,
   OneToMany,
   OneToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { Food } from "./foodEntity";
 import { Order } from "./orderEntity";
@@ -33,8 +34,14 @@ export class User {
   @Column()
   cpf: string;
 
-  @Column()
+  @Column({ default: true })
+  isActive: boolean;
+
+  @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @OneToMany(() => Food, (food) => food.users)
   food: Food[];
@@ -42,8 +49,8 @@ export class User {
   @OneToMany(() => Room, (room) => room.user)
   room: Room[];
 
-  @OneToOne(() => Order, order => order.user)
-  order: Order
+  @OneToOne(() => Order, (order) => order.user)
+  order: Order;
 
   @BeforeUpdate()
   @BeforeInsert()
