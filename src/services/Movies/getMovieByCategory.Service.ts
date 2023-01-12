@@ -1,5 +1,5 @@
-import AppDataSource from "../data-source";
-import { Movie } from "../entities/moviesEntity";
+import AppDataSource from "../../data-source";
+import { Movie } from "../../entities/moviesEntity";
 
 export function getMovieByCategoryService(id: string) {
 

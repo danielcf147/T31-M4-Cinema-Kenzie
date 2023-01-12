@@ -1,6 +1,4 @@
 import { hashSync } from "bcryptjs";
-
-
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -20,8 +18,8 @@ import { Room } from "./roomsEntity";
 @Entity("employees")
 export class Employee {
 
-@PrimaryGeneratedColumn("uuid")
-id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
 
   @Column()
@@ -46,11 +44,13 @@ id: string;
   @Column()
   password: string;
 
+
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date
 
   @UpdateDateColumn()
   updatedAt: Date;
+
 
   @ManyToMany(() => Room, (room) => room.employee)
   @JoinTable()

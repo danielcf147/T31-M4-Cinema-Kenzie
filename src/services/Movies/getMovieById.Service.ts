@@ -1,6 +1,6 @@
-import AppDataSource from "../data-source";
-import { Movie } from "../entities/moviesEntity";
-import { MovieReturn } from "../interfaces/movie/movies.Interfaces";
+import AppDataSource from "../../data-source";
+import { Movie } from "../../entities/moviesEntity";
+import { MovieReturn } from "../../interfaces/movie/movies.Interfaces";
 
 export async function getMovieByIdService(movieId: string): Promise<MovieReturn> {
 

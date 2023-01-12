@@ -1,8 +1,8 @@
-import AppDataSource from "../data-source";
-import { CategoryMovie } from "../entities/categoryMoviesEntity";
-import { Movie } from "../entities/moviesEntity";
-import { AppError } from "../error";
-import { Movie as IMovie, MovieRegisters } from "../interfaces/movie/movies.Interfaces";
+import AppDataSource from "../../data-source";
+import { CategoryMovie } from "../../entities/categoryMoviesEntity";
+import { Movie } from "../../entities/moviesEntity";
+import { AppError } from "../../error";
+import { Movie as IMovie, MovieRegisters } from "../../interfaces/movie/movies.Interfaces";
 
 export async function createMoviesService(movie: MovieRegisters) {
     console.log(movie)
@@ -27,7 +27,6 @@ export async function createMoviesService(movie: MovieRegisters) {
         director: movie.director,
         release_date: movie.release_date,
         synopsis: movie.synopsis
-
     }
 
     const newMovie = movieRepository.create(dataMovie)
