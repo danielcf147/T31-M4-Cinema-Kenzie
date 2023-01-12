@@ -11,20 +11,22 @@ const userRequestSeriallizer: SchemaOf<IUserRequest> = yup.object().shape({
 });
 
 const userResponse: SchemaOf<IUser> = yup.object().shape({
+  id: yup.string(),
   name: yup.string(),
   email: yup.string().email(),
   cpf: yup.string(),
   age: yup.number(),
-  createAt: yup.date(),
+  createdAt: yup.date(),
 });
 
 const allUsersSerializer: SchemaOf<IUser[]> = yup.array(
   yup.object().shape({
+    id: yup.string(),
     name: yup.string(),
     email: yup.string().email(),
     cpf: yup.string(),
     age: yup.number(),
-    createAt: yup.date(),
+    createdAt: yup.date(),
   })
 );
 
