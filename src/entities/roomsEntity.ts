@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Employee } from "./employeeEntity";
 import { Movie } from "./moviesEntity";
 import { Ticket } from "./ticketsEntity";
@@ -27,6 +27,6 @@ export class Room {
     @ManyToMany(() => Employee, employee => employee.rooms)
     employee: Employee[]
 
-    @ManyToOne(() => User , user => user.room)
+    @ManyToOne(() => User, user => user.room)
     user: User
 }

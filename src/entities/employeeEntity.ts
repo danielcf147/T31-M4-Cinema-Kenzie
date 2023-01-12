@@ -1,26 +1,18 @@
 import { hashSync } from "bcryptjs";
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./orderEntity";
 import { Room } from "./roomsEntity";
 
 @Entity("employees")
 export class Employee {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Column()
   name: string;
 
   @Column({ unique: true })
-  registration: string;
+  registration: string
 
   @Column()
   age: number;
@@ -29,7 +21,7 @@ export class Employee {
   isAdm: boolean;
 
   @Column({ default: true })
-  isActive: boolean;
+  isActive: boolean
 
   @Column()
   password: string;
@@ -44,8 +36,9 @@ export class Employee {
   @JoinTable()
   rooms: Room[];
 
-  @ManyToMany(() => Order, (order) => order.employee)
-  order: Order[];
+  @ManyToMany(() => Order, order => order.employee)
+  order: Order[]
+
 
   @BeforeUpdate()
   @BeforeInsert()

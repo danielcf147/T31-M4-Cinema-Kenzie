@@ -6,6 +6,7 @@ import {
   Entity,
   OneToMany,
   OneToOne,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Food } from "./foodEntity";
@@ -41,7 +42,7 @@ export class User {
   @OneToMany(() => Room, (room) => room.user)
   room: Room[];
 
-  @OneToOne(() => Order , order => order.user)
+  @OneToOne(() => Order, order => order.user)
   order: Order
 
   @BeforeUpdate()
