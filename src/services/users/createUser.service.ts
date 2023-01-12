@@ -1,7 +1,7 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/userEntity";
 import { AppError } from "../../error";
-import { IUser, IUserRequest } from "../../interfaces/users.Interfaces";
+import { IUser, IUserRequest } from "../../interfaces/user/users.Interfaces";
 import { userResponse } from "../../serializers/users/users.serializers";
 
 const createUserService = async (userData: IUserRequest): Promise<IUser> => {

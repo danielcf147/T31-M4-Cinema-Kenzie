@@ -6,7 +6,7 @@ import {
   Entity,
   OneToMany,
   OneToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Food } from "./foodEntity";
 import { Order } from "./orderEntity";
@@ -14,7 +14,7 @@ import { Room } from "./roomsEntity";
 
 @Entity("users")
 export class User {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()

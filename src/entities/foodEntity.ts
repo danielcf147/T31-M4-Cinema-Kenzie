@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { CategoryFood } from "./categoryFoodEntity";
 import { Order } from "./orderEntity";
 import { User } from "./userEntity";
@@ -6,7 +6,7 @@ import { User } from "./userEntity";
 @Entity('foods')
 export class Food {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()

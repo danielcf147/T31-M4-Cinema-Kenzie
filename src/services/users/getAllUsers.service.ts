@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/userEntity";
-import { IUser } from "../../interfaces/users.Interfaces";
+import { IUser } from "../../interfaces/user/users.Interfaces";
 import { allUsersSerializer } from "../../serializers/users/users.serializers";
 
 const getAllUsersService = async (): Promise<IUser[]> => {

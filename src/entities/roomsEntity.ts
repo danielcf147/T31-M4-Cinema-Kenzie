@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Employee } from "./employeeEntity";
 import { Movie } from "./moviesEntity";
 import { Ticket } from "./ticketsEntity";
@@ -6,7 +6,7 @@ import { User } from "./userEntity";
 
 @Entity('rooms')
 export class Room {
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
