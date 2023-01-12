@@ -19,7 +19,6 @@ export interface EmployeeRegister {
 
 export interface EmployeeUpdate {
   name?: string;
-  registration?: string;
   age?: number;
   isAdm?: boolean;
   password?: string;

@@ -10,7 +10,6 @@ import { employeeWithoutPasswordSerializer } from "../../serializers/employee.se
 const createEmployeeService = async (
   data: IEmployeeRegister
 ): Promise<IEmployee> => {
-  console.log(data);
   const employeeRepository = AppDataSource.getRepository(Employee);
   const findUser = await employeeRepository.findOneBy({
     registration: data.registration,
