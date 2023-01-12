@@ -3,7 +3,15 @@ export interface Product {
     name: string;
     price: number;
     stock: number;
-    categoryFoodId: string;
+    categoryFoodId?: string;
+}
+
+export interface ProductReturn {
+    id: string;
+    name: string;
+    price: number;
+    stock: number;
+    categoryFood: string;
 }
 
 export interface ProductCreate {

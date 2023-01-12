@@ -1,8 +1,8 @@
-export interface CategoryFood {
+export interface CategoryProduct {
     id: string;
     name: string
 }
 
-export interface CategoryFoodCreate {
+export interface CategoryProductCreate {
     name: string;
 }

@@ -6,9 +6,9 @@ const productsRouters = Router()
 productsRouters.post("", createProductsController)
 productsRouters.get("", getProductsController)
 productsRouters.get("/:id", getProductByIdController)
-productsRouters.put("/:id", updateProductByIdController)
+productsRouters.patch("/:id", updateProductByIdController)
 productsRouters.delete("/:id", deleteProductByIdController)
-productsRouters.get("/:id", getProductsByCategoryIdController)
+productsRouters.get("/category/:id", getProductsByCategoryIdController)
 
 
 export { productsRouters }

@@ -1,6 +1,4 @@
 import { hashSync } from "bcryptjs";
-
-
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -47,8 +45,12 @@ export class Employee {
   password: string;
 
 
+  @CreateDateColumn()
+  createdAt: Date
+
   @UpdateDateColumn()
   updatedAt: Date;
+
 
   @ManyToMany(() => Room, (room) => room.employee)
   @JoinTable()
