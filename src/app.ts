@@ -9,20 +9,16 @@ import { categoryMovieRouters } from "./routes/CategoryMovies/categoryMovies.Rou
 import employeeRouter from "./routes/Employee/employee.routes";
 import { productsRouters } from "./routes/Products/products.Routes";
 
-
 const app = express();
 
 app.use(express.json());
 
-
 app.use("/employee", employeeRouter);
-app.use('/rooms', roomRoute)
+app.use("/rooms", roomRoute);
 app.use("/movies", moviesRouters);
 app.use("/categories/movies", categoryMovieRouters);
 app.use("/products", productsRouters)
 
 app.use(handleError);
-
-
 
 export default app;
