@@ -17,4 +17,6 @@ app.use("/rooms", roomRoute);
 app.use("/movies", moviesRouters);
 app.use("/categories/movies", categoryMovieRouters);
 
+app.use(handleError);
+
 export default app;
