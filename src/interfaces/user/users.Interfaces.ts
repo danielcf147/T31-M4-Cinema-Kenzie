@@ -7,11 +7,12 @@ export interface IUserRequest {
 }
 
 export interface IUser {
+  id: string;
   name: string;
   email: string;
   age: number;
   cpf: string;
-  createAt: Date;
+  createdAt: Date;
 }
 
 export interface IUserLogin {

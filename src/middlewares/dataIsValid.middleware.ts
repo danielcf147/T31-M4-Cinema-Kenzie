@@ -13,7 +13,7 @@ const dataIsValid =
       req.body = validatedData;
       return next();
     } catch (error) {
-      return res.status(400).json({ message: error.errros });
+      return res.status(400).json({ message: error.errors });
     }
   };
 
