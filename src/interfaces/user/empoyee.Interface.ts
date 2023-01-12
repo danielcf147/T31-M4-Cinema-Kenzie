@@ -23,3 +23,8 @@ export interface EmployeeUpdate {
   isAdm?: boolean;
   password?: string;
 }
+
+export interface IEmployeeLogin {
+  registration: string;
+  password: string;
+}
