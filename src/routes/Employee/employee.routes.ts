@@ -15,9 +15,7 @@ const employeeRouter = Router();
 
 employeeRouter.post(
   "",
-  ensureAuthMiddleware,
   dataIsValid(employeeSerializer),
-  ensureIsAdm,
   createEmployeeController
 );
 employeeRouter.get(
