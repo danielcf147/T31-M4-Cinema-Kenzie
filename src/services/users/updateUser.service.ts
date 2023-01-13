@@ -9,6 +9,17 @@ const updateUserService = async (
   data: IUserUpdate
 ): Promise<IUser> => {
   const userRepository = AppDataSource.getRepository(User);
+
+  const keys = Object.keys(data);
+
+  const invalidKey = keys.find((key) => {
+    return key === "id";
+  });
+
+  if (invalidKey) {
+    throw new AppError("Cant update id", 401);
+  }
+
   const user = await userRepository.findOneBy({
     id: id,
   });
