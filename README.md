@@ -44,7 +44,7 @@ PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(
 ````
 ````
 Rotas Movies:
-POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(tipo string), release_date(tipo string), categoryMovie_id(tipo string)
+POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(tipo string), release_date(tipo string), categoryMovie_id(tipo string)}
 GET: /movies
 GET: /movies/:id 
 GET: /movies/:categoryId
