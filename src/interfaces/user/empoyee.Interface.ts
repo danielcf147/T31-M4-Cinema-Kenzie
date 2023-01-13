@@ -22,6 +22,7 @@ export interface EmployeeUpdate {
   age?: number;
   isAdm?: boolean;
   password?: string;
+  id?: string;
 }
 
 export interface IEmployeeLogin {

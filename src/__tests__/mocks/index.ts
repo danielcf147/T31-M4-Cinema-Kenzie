@@ -31,6 +31,22 @@ export const mockedAdmin: IEmployeeRegister = {
   isAdm: true,
 };
 
+export const mockedEmployee: IEmployeeRegister = {
+  name: "Pedro",
+  registration: "2",
+  password: "123456",
+  age: 20,
+  isAdm: false,
+};
+
+export const mockedEmployee2: IEmployeeRegister = {
+  name: "Jana",
+  registration: "3",
+  password: "123456",
+  age: 21,
+  isAdm: false,
+};
+
 export const mockedUserLogin: IUserLogin = {
   email: "joana@mail.com",
   password: "123456",
@@ -43,5 +59,15 @@ export const mockedUserLogin2: IUserLogin = {
 
 export const mockedAdminLogin: IEmployeeLogin = {
   registration: "1",
+  password: "123456",
+};
+
+export const mockedEmployeeLogin: IEmployeeLogin = {
+  registration: "2",
+  password: "123456",
+};
+
+export const mockedEmployeeLogin2: IEmployeeLogin = {
+  registration: "3",
   password: "123456",
 };
