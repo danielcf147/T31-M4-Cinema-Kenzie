@@ -13,10 +13,6 @@ const updateUserService = async (
     id: id,
   });
 
-  if (!user) {
-    throw new AppError("User not found", 404);
-  }
-
   const updatedUser = userRepository.create({
     ...user,
     ...data,
