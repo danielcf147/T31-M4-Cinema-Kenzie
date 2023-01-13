@@ -11,6 +11,15 @@ const updateEmployeeService = async (
   data: IEmployeeUpdate,
   employeeId: string
 ): Promise<IEmployee> => {
+  const keys = Object.keys(data);
+
+  const invalidKey = keys.find((key) => {
+    return key === "id";
+  });
+
+  if (invalidKey) {
+    throw new AppError("Cant update id", 401);
+  }
   const employeeRepository = AppDataSource.getRepository(Employee);
   const findEmployee = await employeeRepository.findOneBy({
     id: employeeId,
