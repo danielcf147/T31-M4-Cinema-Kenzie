@@ -15,6 +15,14 @@ export const mockedUser: IUserRequest = {
   cpf: "99999999999",
 };
 
+export const mockedUser2: IUserRequest = {
+  name: "Joao",
+  email: "joao@mail.com",
+  password: "123456",
+  age: 25,
+  cpf: "99999999999",
+};
+
 export const mockedAdmin: IEmployeeRegister = {
   name: "Felipe",
   registration: "1",
@@ -25,6 +33,11 @@ export const mockedAdmin: IEmployeeRegister = {
 
 export const mockedUserLogin: IUserLogin = {
   email: "joana@mail.com",
+  password: "123456",
+};
+
+export const mockedUserLogin2: IUserLogin = {
+  email: "joao@mail.com",
   password: "123456",
 };
 
