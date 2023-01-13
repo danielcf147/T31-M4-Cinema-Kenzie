@@ -16,6 +16,7 @@ const userResponse: SchemaOf<IUser> = yup.object().shape({
   email: yup.string().email(),
   cpf: yup.string(),
   age: yup.number(),
+  isActive: yup.boolean(),
   createdAt: yup.date(),
 });
 
@@ -26,6 +27,7 @@ const allUsersSerializer: SchemaOf<IUser[]> = yup.array(
     email: yup.string().email(),
     cpf: yup.string(),
     age: yup.number(),
+    isActive: yup.boolean(),
     createdAt: yup.date(),
   })
 );
