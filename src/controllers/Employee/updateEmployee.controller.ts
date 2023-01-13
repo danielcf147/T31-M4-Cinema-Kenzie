@@ -7,7 +7,7 @@ const updateEmployeeController = async (
 ) => {
   const employeeID = request.params.id;
   const updateData = request.body;
-  const updateEmployee = updateEmployeeService(updateData, employeeID);
+  const updateEmployee = await updateEmployeeService(updateData, employeeID);
   return response.status(200).json(updateEmployee);
 };
 export default updateEmployeeController;

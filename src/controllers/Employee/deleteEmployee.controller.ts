@@ -5,7 +5,7 @@ const deleteEmployeeController = async (
   request: Request,
   response: Response
 ) => {
-  const deleteEmployee = deleteEmployeeService(request.params.id);
+  const deleteEmployee = await deleteEmployeeService(request.params.id);
   return response.status(204).json(deleteEmployee);
 };
 export default deleteEmployeeController;

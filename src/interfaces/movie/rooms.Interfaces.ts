@@ -1,19 +1,23 @@
+import { IMovie } from "./movies.Interfaces";
+
 export interface Rooms {
-    id: string;
-    name: string;
-    movie_id: string;
-    is3D: boolean;
-    seats: number
+  id: string;
+  name: string;
+  movie_id: string;
+  is3D: boolean;
+  seats: number;
 }
 
 export interface RoomCreate {
-    name: string;
-    movie_id: string;
-    is3D: boolean;
-    seats: number;
+  name: string;
+  movie_id: string;
+  is3D: boolean;
+  seats: number;
 }
 
-export interface RoomUpdate {
-    movie_id: string;
-    is3D: boolean;
+export interface IRoomUpdate {
+  is3D?: boolean;
+  name?: string;
+  seats?: number;
+  movie?: string;
 }

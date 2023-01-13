@@ -12,6 +12,7 @@ export interface IUser {
   email: string;
   age: number;
   cpf: string;
+  isActive: boolean;
   createdAt: Date;
 }
 
