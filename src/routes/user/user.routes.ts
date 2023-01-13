@@ -9,12 +9,13 @@ import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
 import isAdmOrSameUserMiddleware from "../../middlewares/user/isAdm.sameUser.middleware";
 import userExistsMiddleware from "../../middlewares/user/userExists.middleware";
+import userIsAdmMiddleware from "../../middlewares/user/userIsAdm.middleware";
 import { userRequestSeriallizer } from "../../serializers/users/users.serializers";
 
 const userRoutes = Router();
 
 userRoutes.post("", dataIsValid(userRequestSeriallizer), createUserController);
-userRoutes.get("", ensureAuthMiddleware, allUserControler);
+userRoutes.get("", ensureAuthMiddleware, userIsAdmMiddleware, allUserControler);
 userRoutes.patch(
   "/:id",
   ensureAuthMiddleware,
@@ -27,6 +28,7 @@ userRoutes.delete(
   ensureAuthMiddleware,
   userExistsMiddleware,
   isAdmOrSameUserMiddleware,
+  userIsAdmMiddleware,
   deleteUserController
 );
 
