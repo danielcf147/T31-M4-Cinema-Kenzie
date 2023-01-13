@@ -33,8 +33,8 @@ DELETE: /employee/:id - {Parametro: isActive(tipo boolean)}
 ````
 ````
 Rotas Login:
-POST: /login - {Parametros: email(tipo string), password(tipo string)
-POST: /login/empolyer - {Parametros: registration(tipo string), password(tipo string)
+POST: /login - {Parametros: email(tipo string), password(tipo string)}
+POST: /login/empolyer - {Parametros: registration(tipo string), password(tipo string)}
 ````
 ````
 Rotas Rooms:
