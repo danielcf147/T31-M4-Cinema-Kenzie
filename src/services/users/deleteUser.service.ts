@@ -12,6 +12,10 @@ const deleteUserService = async (id: string) => {
     throw new AppError("User not found", 400);
   }
 
+  if (user.isActive === false) {
+    throw new AppError("User already deleted", 400);
+  }
+
   user.isActive = false;
   await userRepository.save(user);
 
