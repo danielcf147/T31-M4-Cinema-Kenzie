@@ -1,4 +1,4 @@
-import { Food } from "../interfaces/food/food.Interface";
+import { Product } from "./products/product.Interface";
 
 export interface Order {
     id: number;
@@ -12,7 +12,7 @@ export interface OrderCrete {
     employee_id?: string;
     user_id?: string;
     status: 'StandBy'
-    food: Food[];
+    food: Product[];
     total: number;
 }
 
