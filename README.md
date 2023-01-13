@@ -14,6 +14,53 @@ Com isso feito, para rodar sua aplicação, basta utilizar o comando
 ````
 yarn dev
 ````
+<br> 
+# **Sobre as rotas**
+
+Rotas User:
+POST: /user - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
+GET: /user
+PATCH: /user/:id - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
+DELETE: /user/:id - {Parametro: isActive(tipo boolean)}
+
+Rotas Employee:
+POST: /employee - {Parametros: name(tipo string), registration(tipo string), age(tipo number), isAdm(tipo boolean), password(tipo string)}
+GET: /employee
+PATCH: /employee/:id - {Parametros: name(tipo string), registration(tipo string), age(tipo number), isAdm(tipo boolean), password(tipo string)}
+DELETE: /employee/:id - {Parametro: isActive(tipo boolean)}
+
+Rotas Login:
+POST: /login - {Parametros: email(tipo string), password(tipo string)
+POST: /login/empolyer - {Parametros: registration(tipo string), password(tipo string)
+
+Rotas Rooms:
+POST: /rooms - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+GET: /rooms 
+PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+
+Rotas Movies:
+POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(tipo string), release_date(tipo string), categoryMovie_id(tipo string)
+GET: /movies
+GET: /movies/:id 
+GET: /movies/:categoryId
+
+Rotas Category Movies:
+POST: /categories/movies - {Parametro: name(tipo string)}
+GET: /categories/movies
+GET: /categories/movies/:id
+
+Rotas Product:
+POST: /products - {Parametros: name(tipo string), price(tipo number), stock(tipo number), categoryFoodId(tipo string)}
+GET: /products
+GET: /products/:id
+GET: /products/category/:id
+PATCH: /products/:id - {Parametros: price(tipo number), stock(tipo number)}
+DELETE: /products/:id
+
+Rotas Category Products:
+POST: /categories/products - {Parametros: name(tipo string)}
+GET: /categories/products
+GET: /categories/products/:id
 
 <br>
 
