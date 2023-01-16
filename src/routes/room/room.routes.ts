@@ -3,11 +3,20 @@ import { CreateRoomController } from "../../controllers/room/createRoom.controll
 import { getAllRoomsController } from "../../controllers/room/getRoom.controller";
 import { updateRoomController } from "../../controllers/room/updateRoom.controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
-import { roomUpdateSerializer } from "../../serializers/room/room.serializer";
+import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
+import {
+  createRoomSerializer,
+  roomUpdateSerializer,
+} from "../../serializers/room/room.serializer";
 
 export const roomRoute = Router();
 
-roomRoute.post("", CreateRoomController);
+roomRoute.post(
+  "",
+  ensureAuthMiddleware,
+  dataIsValid(createRoomSerializer),
+  CreateRoomController
+);
 roomRoute.get("", getAllRoomsController);
 roomRoute.patch(
   "/:id",
