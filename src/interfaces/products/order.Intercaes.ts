@@ -1,4 +1,4 @@
-import { Food } from "./product.Interface";
+import { Food } from "../../entities/foodEntity";
 
 export interface Order {
   id: number;
