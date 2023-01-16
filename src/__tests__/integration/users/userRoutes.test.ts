@@ -8,6 +8,7 @@ import {
   mockedAdminLogin,
   mockedAdmin,
   mockedUser2,
+  mockedUserLogin2,
 } from "../../mocks";
 
 describe("/user", () => {

@@ -10,7 +10,6 @@ import {
 export async function createMoviesService(
   movie: MovieRegisters
 ): Promise<IMovie> {
-  console.log(movie);
   const movieRepository = AppDataSource.getRepository(Movie);
   const movieCategoryRepository = AppDataSource.getRepository(CategoryMovie);
 

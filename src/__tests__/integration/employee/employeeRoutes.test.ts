@@ -10,7 +10,7 @@ import {
   mockedEmployee2,
 } from "../../mocks";
 
-describe("/user", () => {
+describe("/employee", () => {
   let connection: DataSource;
 
   beforeAll(async () => {

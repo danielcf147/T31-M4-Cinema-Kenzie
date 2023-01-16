@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { IEmployeeLogin } from "../../interfaces/user/empoyee.Interface";
 import { IUserLogin } from "../../interfaces/user/users.Interfaces";
-import createEmployeSessionService from "../../services/login/createEemployerSession";
-import createSessionService from "../../services/login/createSession";
+import createEmployeSessionService from "../../services/login/createEemployerSession.service";
+import createSessionService from "../../services/login/createSession.service";
 
 const createSessionController = async (req: Request, res: Response) => {
   const data: IUserLogin = req.body;

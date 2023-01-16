@@ -8,7 +8,7 @@ export async function createRoomService(room: RoomCreate) {
 
   const roomRepository = AppDataSource.getRepository(Room);
 
-  const roomAlreadyExists = roomRepository.findOneBy({ name: name });
+  const roomAlreadyExists = await roomRepository.findOneBy({ name: name });
 
   if (roomAlreadyExists) {
     throw new AppError("This room already exists", 409);

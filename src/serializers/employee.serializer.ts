@@ -34,6 +34,7 @@ const employeeUpdate: SchemaOf<IEmployeeUpdate> = yup.object().shape({
   isAdm: yup.boolean().notRequired(),
   password: yup.string().notRequired(),
   id: yup.string().notRequired(),
+  isActive: yup.boolean().notRequired(),
 });
 
 export {

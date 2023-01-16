@@ -52,7 +52,6 @@ export class User {
   @OneToOne(() => Order, (order) => order.user)
   order: Order;
 
-  @BeforeUpdate()
   @BeforeInsert()
   hashPassword() {
     this.password = hashSync(this.password, 10);
