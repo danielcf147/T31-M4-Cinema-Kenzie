@@ -12,6 +12,7 @@ import { productsRouters } from "./routes/Products/products.Routes";
 import { categoryProductsRoutes } from "./routes/CategoryProducts/categoryProducts.Routes";
 import userRoutes from "./routes/user/user.routes";
 import sessionRoute from "./routes/session/createUserSession.routes";
+import { orderRoutes } from "./routes/orders/orders.routes";
 
 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/movies", moviesRouters);
 app.use("/categories/movies", categoryMovieRouters);
 app.use("/products", productsRouters)
 app.use("/categories/products", categoryProductsRoutes)
+app.use("/order", orderRoutes)
 
 app.use(handleError);
 

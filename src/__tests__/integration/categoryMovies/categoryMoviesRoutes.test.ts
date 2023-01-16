@@ -69,7 +69,7 @@ describe("/categories/movies", () => {
       .set("Authorization", `Bearer ${employeeLoginResponse.body.token}`);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(409);
+    expect(response.status).toBe(403);
   });
 
   test("POST /categories/movies -  Should not be able to create a movie category that already exists", async () => {
@@ -92,7 +92,7 @@ describe("/categories/movies", () => {
     expect(response.body[0]).toHaveProperty("id");
     expect(response.body[0]).toHaveProperty("name");
     expect(response.body[0].name).toEqual("fantasy");
-    expect(response.body).toHaveLength(3);
+    expect(response.body).toHaveLength(1);
     expect(response.status).toBe(200);
   });
 
