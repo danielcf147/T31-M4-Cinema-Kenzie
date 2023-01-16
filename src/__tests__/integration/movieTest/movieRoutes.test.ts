@@ -162,19 +162,17 @@ describe("/movies", () => {
     expect(response.status).toBe(200);
   });
 
-  test("GET /movies -  should  be able to list movie by ID", async () => {
+  test("GET /movies -  should  be able to list movie by category ID", async () => {
     const getMovie = await request(app).get("/movies");
     const movieId = getMovie.body[0].categoryMovie.id;
-    const response = await request(app).get(`/movies/${movieId}`);
+    const response = await request(app).get(`/movies/category/${movieId}`);
 
-    expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("name");
-    expect(response.body).toHaveProperty("director");
-    expect(response.body).toHaveProperty("synopsis");
-    expect(response.body).toHaveProperty("release_date");
-    expect(response.body).toHaveProperty("category");
-    expect(response.body.name).toEqual("Harry Potter");
-    expect(response.body.category).toEqual("fantasy");
+    expect(response.body[0]).toHaveProperty("id");
+    expect(response.body[0]).toHaveProperty("name");
+    expect(response.body[0]).toHaveProperty("director");
+    expect(response.body[0]).toHaveProperty("synopsis");
+    expect(response.body[0]).toHaveProperty("release_date");
+    expect(response.body[0].name).toEqual("Harry Potter");
     expect(response.status).toBe(200);
   });
 });
