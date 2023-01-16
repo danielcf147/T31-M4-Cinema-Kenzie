@@ -23,6 +23,7 @@ export interface EmployeeUpdate {
   isAdm?: boolean;
   password?: string;
   id?: string;
+  isActive: boolean;
 }
 
 export interface IEmployeeLogin {
