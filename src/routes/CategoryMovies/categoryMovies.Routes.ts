@@ -5,6 +5,7 @@ import {
   getMovieCategoryByIdController,
 } from "../../controllers/CategoryMovie/categoryMovie.Controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
+import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
 import { categoryMovieCreateSerializer } from "../../serializers/categoryMovie/categoryMovie.serializer";
 
@@ -14,6 +15,7 @@ categoryMovieRouters.post(
   "",
   dataIsValid(categoryMovieCreateSerializer),
   ensureAuthMiddleware,
+  ensureIsAdm,
   createCategoryMovieController
 );
 categoryMovieRouters.get("", getMovieCategoriesController);
