@@ -48,7 +48,7 @@ export async function deleteProductByIdController(req: Request, res: Response) {
 
   const deleteProduct = await deleteProductByIdService(id);
 
-  return res.status(200).json(deleteProduct);
+  return res.status(204).json(deleteProduct);
 }
 
 export async function getProductsByCategoryIdController(
