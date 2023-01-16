@@ -22,6 +22,10 @@ const createSessionService = async (data: IUserLogin) => {
     throw new AppError("Email or password invalid", 403);
   }
 
+  if (user.isActive === false) {
+    throw new AppError("User is unactive", 400);
+  }
+
   const token = jwt.sign({}, process.env.SECRET_KEY, {
     subject: user.id,
     expiresIn: "24h",
