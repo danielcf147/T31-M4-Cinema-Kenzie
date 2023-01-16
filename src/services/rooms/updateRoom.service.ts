@@ -30,7 +30,8 @@ const updateRoomService = async (roomId: string, data: IRoomUpdate) => {
 
     const updatedRoom = roomRepository.create({
       ...room,
-      ...ob,
+      ...data,
+      movie: [movie],
     });
     await roomRepository.save(updatedRoom);
 

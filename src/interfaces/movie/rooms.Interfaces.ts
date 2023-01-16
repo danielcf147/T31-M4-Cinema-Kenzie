@@ -1,9 +1,9 @@
 import { IMovie } from "./movies.Interfaces";
 
 export interface Rooms {
-  id: string;
+  id?: string;
   name: string;
-  movie_id: string;
+  movie: IMovie;
   is3D: boolean;
   seats: number;
 }

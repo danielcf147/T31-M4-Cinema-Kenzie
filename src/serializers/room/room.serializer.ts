@@ -1,6 +1,9 @@
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { IRoomUpdate } from "../../interfaces/movie/rooms.Interfaces";
+import {
+  IRoomUpdate,
+  RoomCreate,
+} from "../../interfaces/movie/rooms.Interfaces";
 
 const roomUpdateSerializer: SchemaOf<IRoomUpdate> = yup.object().shape({
   name: yup.string().notRequired(),
@@ -9,4 +12,11 @@ const roomUpdateSerializer: SchemaOf<IRoomUpdate> = yup.object().shape({
   movie: yup.string().notRequired(),
 });
 
-export { roomUpdateSerializer };
+const createRoomSerializer: SchemaOf<RoomCreate> = yup.object().shape({
+  name: yup.string().required(),
+  is3D: yup.boolean().required(),
+  movie_id: yup.string().required(),
+  seats: yup.number().required(),
+});
+
+export { roomUpdateSerializer, createRoomSerializer };

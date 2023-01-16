@@ -12,6 +12,10 @@ const deleteEmployeeService = async (employeeId: string) => {
     throw new AppError("User not found", 404);
   }
 
+  if (findEmployee.isActive === false) {
+    throw new AppError("User already inactive", 400);
+  }
+
   findEmployee.isActive = false;
   await employeeRepository.save(findEmployee);
 
