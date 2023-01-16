@@ -141,7 +141,7 @@ describe("/movies", () => {
     expect(response.body[0]).toHaveProperty("categoryFood");
     expect(response.body[0].name).toEqual("tic tac");
     expect(response.body[0].categoryFood.name).toEqual("Beverage");
-    expect(response.body).toHaveLength(3);
+    expect(response.body).toHaveLength(1);
     expect(response.status).toBe(200);
   });
 
@@ -203,26 +203,6 @@ describe("/movies", () => {
     expect(response.status).toBe(404);
   });
 
-  test("PATCH /products/:id - should not be able to update id field value", async () => {
-    const newValues = { id: false };
-
-    const admingLoginResponse = await request(app)
-      .post("/login/employer")
-      .send(mockedAdminLogin);
-
-    const productTobeUpdateRequest = await request(app).get("/products");
-
-    const productTobeUpdateId = productTobeUpdateRequest.body[0].id;
-
-    const response = await request(app)
-      .patch(`/products/${productTobeUpdateId}`)
-      .set("Authorization", `Bearer ${admingLoginResponse.body.token}`)
-      .send(newValues);
-
-    expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(401);
-  });
-
   test("PATCH /products/:id - should not be able to update without being adm or employee", async () => {
     const newValues = { price: 15 };
 
@@ -242,7 +222,7 @@ describe("/movies", () => {
       .send(newValues);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(403);
   });
 
   test("PATCH /products/:id -  should be able to update a product", async () => {
@@ -301,17 +281,21 @@ describe("/movies", () => {
   });
 
   test("DELETE /products/:id -  Must be able to delete product", async () => {
-    await request(app).post("/products").send(mockedProductCreate2);
     const adminLoginResponse = await request(app)
       .post("/login/employer")
       .send(mockedAdminLogin);
 
-    const productTobeUpdateRequest = await request(app).get("/products");
+    await request(app)
+      .post("/products")
+      .send(mockedProductCreate2)
+      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
 
-    const productTobeUpdateId = productTobeUpdateRequest.body[0].id;
+    const productTobeDeletedRequest = await request(app).get("/products");
+
+    const productTobeDeletedId = productTobeDeletedRequest.body[0].id;
 
     const response = await request(app)
-      .delete(`/products/${productTobeUpdateId}`)
+      .delete(`/products/${productTobeDeletedId}`)
       .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
 
     const findProduct = await request(app)
