@@ -150,7 +150,7 @@ export const mockedRoomCreate: RoomCreate = {
   name: "1",
   is3D: true,
   seats: 200,
-  movie_id: "harry potter",
+  movie_id: "",
 };
 
 export const mockedRoomCreate2: RoomCreate = {
