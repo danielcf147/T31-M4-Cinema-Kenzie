@@ -20,9 +20,6 @@ export async function createTicketsService(ticket: TicketCreate) {
 
   const findRoom = await roomRepository.findOneBy({ id: ticket.room_id });
 
-  /* console.log(findRoom) */
-  console.log(ticket.room_id)
-
   if (!findRoom) {
     throw new AppError("Room not found", 404);
   }
