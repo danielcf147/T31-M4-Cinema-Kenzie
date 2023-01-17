@@ -38,5 +38,19 @@ export async function createRoomService(employerId: string, room: RoomCreate) {
 
   await roomRepository.save(newRoom);
 
-  return newRoom;
+  const roomResponse = await roomRepository
+    .createQueryBuilder("rooms")
+    .innerJoinAndSelect("rooms.movie", "movie")
+    .innerJoinAndSelect("rooms.employee", "employee")
+    .select([
+      "rooms",
+      "movie",
+      "employee.id",
+      "employee.name",
+      "employee.registration",
+    ])
+    .where("rooms.id = :idRoom", { idRoom: newRoom.id })
+    .getOne();
+
+  return roomResponse;
 }
