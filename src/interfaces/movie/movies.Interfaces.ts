@@ -25,3 +25,11 @@ export interface MovieReturn {
   release_date: string;
   category: string;
 }
+
+export interface IMovieRoom {
+  id: string;
+  name: string;
+  director: string;
+  synopsis: string;
+  release_date: string;
+}
