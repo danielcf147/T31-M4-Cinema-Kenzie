@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { MovieRegisters } from "../../interfaces/movie/movies.Interfaces";
 import { createMoviesService } from "../../services/Movies/createMovie.Service";
+import { deleteMovieService } from "../../services/Movies/deleteMovie.service";
 import { getAllMoviesService } from "../../services/Movies/getAllMovies.Service";
 import { getMovieByCategoryService } from "../../services/Movies/getMovieByCategory.Service";
 import { getMovieByIdService } from "../../services/Movies/getMovieById.Service";
@@ -36,4 +37,12 @@ export async function getMovieByIdController(req: Request, res: Response) {
   const movie = await getMovieByIdService(movieId);
 
   return res.status(200).json(movie);
+}
+
+export async function deleteMovieController(req: Request, res: Response) {
+  const movieId = req.params.movieId;
+
+  const movieToBeDeleted = await deleteMovieService(movieId);
+
+  return res.status(204).json(movieToBeDeleted);
 }

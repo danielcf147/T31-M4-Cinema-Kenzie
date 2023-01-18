@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createMovieController,
+  deleteMovieController,
   getAllMoviesController,
   getMovieByCategoryController,
   getMovieByIdController,
@@ -22,5 +23,11 @@ moviesRouters.post(
 moviesRouters.get("", getAllMoviesController);
 moviesRouters.get("/:movieId", getMovieByIdController);
 moviesRouters.get("/category/:categoryId", getMovieByCategoryController);
+moviesRouters.delete(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureIsAdm,
+  deleteMovieController
+);
 
 export { moviesRouters };
