@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { CategoryMovie } from "../../entities/categoryMoviesEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { CategoryMovieCreate } from "../../interfaces/category/categoryMovie.Interface";
 
 export async function createCategoryMovieService(

@@ -5,11 +5,11 @@ import {
   getAllMoviesController,
   getMovieByCategoryController,
   getMovieByIdController,
-} from "../../controllers/Movies/movies.Controllers";
+} from "../../controllers/movies/movies.Controllers";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
-import { movieCreateSerializer } from "../../serializers/movies/movie.serializer";
+import { movieCreateSerializer } from "../../serializers/movie/movie.serializer";
 
 const moviesRouters = Router();
 

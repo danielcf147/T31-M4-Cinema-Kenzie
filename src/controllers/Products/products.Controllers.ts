@@ -5,12 +5,12 @@ import {
   ProductUpdate,
   ProductReturn,
 } from "../../interfaces/products/product.Interface";
-import { createProductsService } from "../../services/Products/createProducts.Service";
-import { deleteProductByIdService } from "../../services/Products/deleteProductById.Service";
-import { getProductByIdService } from "../../services/Products/getProductById.Service";
-import { getProductsService } from "../../services/Products/getProducts.Service";
-import { getProductsByCategoryIdService } from "../../services/Products/getProductsByCategoryId.Service";
-import { updateProductByIdService } from "../../services/Products/updateProductById.Service";
+import { createProductsService } from "../../services/products/createProducts.Service";
+import { deleteProductByIdService } from "../../services/products/deleteProductById.Service";
+import { getProductByIdService } from "../../services/products/getProductById.Service";
+import { getProductsService } from "../../services/products/getProducts.Service";
+import { getProductsByCategoryIdService } from "../../services/products/getProductsByCategoryId.Service";
+import { updateProductByIdService } from "../../services/products/updateProductById.Service";
 
 export async function createProductsController(req: Request, res: Response) {
   const product: ProductCreate = req.body;

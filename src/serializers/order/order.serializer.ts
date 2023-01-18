@@ -3,7 +3,7 @@ import { SchemaOf } from "yup";
 import {
   OrderCreate,
   OrderProductCreate,
-} from "../../interfaces/order.intercaes";
+} from "../../interfaces/order/order.intercaes";
 
 const orderProductCreateSerializer: SchemaOf<OrderProductCreate> = yup
   .object()

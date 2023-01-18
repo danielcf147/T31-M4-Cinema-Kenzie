@@ -1,7 +1,8 @@
 import AppDataSource from "../../data-source";
 import { Movie } from "../../entities/moviesEntity";
 import { Room } from "../../entities/roomsEntity";
-import { AppError } from "../../error";
+
+import { AppError } from "../../errors";
 import {
   IRoomUpdate,
   IRoomUpdateResponse,

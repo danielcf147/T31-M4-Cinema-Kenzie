@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/userEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 
 const deleteUserService = async (id: string) => {
   const userRepository = AppDataSource.getRepository(User);

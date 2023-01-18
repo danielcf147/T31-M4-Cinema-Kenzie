@@ -114,7 +114,13 @@ describe("/tickets", () => {
   });
 
   test("GET /tickets -  should be able to list all tickets", async () => {
-    const response = await request(app).get("/tickets");
+    const admLoginResponse = await request(app)
+      .post("/login/employer")
+      .send(mockedAdminLogin);
+
+    const response = await request(app)
+      .get("/tickets")
+      .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
 
     expect(response.body[0]).toHaveProperty("id");
     expect(response.body[0]).toHaveProperty("movie");

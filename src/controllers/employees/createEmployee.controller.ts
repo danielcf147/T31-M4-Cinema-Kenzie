@@ -1,4 +1,4 @@
-import createEmployeeService from "../../services/Employee/createEmployee.service";
+import createEmployeeService from "../../services/employee/createEmployee.service";
 import { Request, Response } from "express";
 import { EmployeeRegister as IEmployeeRegister } from "../../interfaces/user/empoyee.Interface";
 
