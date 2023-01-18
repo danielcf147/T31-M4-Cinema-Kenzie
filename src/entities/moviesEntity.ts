@@ -1,34 +1,44 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 import { CategoryMovie } from "./categoryMoviesEntity";
 import { Room } from "./roomsEntity";
 import { Ticket } from "./ticketsEntity";
 
-@Entity('movie')
+@Entity("movie")
 export class Movie {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @Column()
+  name: string;
 
-    @Column()
-    name: string;
+  @Column()
+  director: string;
 
-    @Column()
-    director: string;
+  @Column()
+  synopsis: string;
 
-    @Column()
-    synopsis: string;
+  @Column({ type: "date" })
+  release_date: string;
 
-    @Column({ type: "date" })
-    release_date: string
+  @Column({ default: true })
+  in_theaters: boolean;
 
-    @ManyToOne(() => CategoryMovie, (category) => category.movies)
-    categoryMovie: CategoryMovie
+  @ManyToOne(() => CategoryMovie, (category) => category.movies)
+  categoryMovie: CategoryMovie;
 
-    @ManyToMany(() => Room, room => room.movie)
-    @JoinTable()
-    rooms: Room[]
+  @ManyToMany(() => Room, (room) => room.movie)
+  @JoinTable()
+  rooms: Room[];
 
-    @OneToMany(() => Ticket, tickets => tickets.movie)
-    tickets: Ticket[]
+  @OneToMany(() => Ticket, (tickets) => tickets.movie)
+  tickets: Ticket[];
 }

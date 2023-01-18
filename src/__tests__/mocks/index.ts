@@ -180,3 +180,16 @@ export const mockedOrderCreate: OrderCreate = {
   status: "StandBy",
   total: 2,
 };
+
+export const mockedOrderCreate2: OrderCreate = {
+  employee: "",
+  food: [
+    {
+      name: "pipoca",
+      price: 10,
+      stock: 100,
+    },
+  ],
+  status: "StandBy",
+  total: 2,
+};

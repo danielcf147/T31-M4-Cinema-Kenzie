@@ -20,8 +20,6 @@ export async function createEmployeeOrUser(
 }
 
 export async function createOrderService(order: any, tokenId: string) {
-  console.log(order.employee);
-  console.log(order.user);
   if (order.employee !== tokenId && order.user !== tokenId) {
     throw new AppError("Must be user same user ID to create order");
   }
@@ -35,7 +33,6 @@ export async function createOrderService(order: any, tokenId: string) {
 
     const userId = entity.id;
     const newUserOrder = { ...order, user: userId };
-    console.log(newUserOrder);
 
     newOrder = orderRepository.create(newUserOrder);
   } else {
@@ -43,7 +40,6 @@ export async function createOrderService(order: any, tokenId: string) {
 
     const employeeId = entity.id;
     const newEmployeeOrder = { ...order, employee_id: employeeId };
-    console.log(newEmployeeOrder);
 
     newOrder = orderRepository.create(newEmployeeOrder);
   }
