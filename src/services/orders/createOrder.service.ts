@@ -21,7 +21,7 @@ export async function createEmployeeOrUser(
 
 export async function createOrderService(order: any, tokenId: string) {
   if (order.employee !== tokenId && order.user !== tokenId) {
-    throw new AppError("Must be user same user ID to create order");
+    throw new AppError("Must be user same user ID to create order", 403);
   }
   const orderRepository = AppDataSource.getRepository(Order);
 
