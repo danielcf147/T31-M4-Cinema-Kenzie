@@ -1,6 +1,6 @@
 import { compare } from "bcryptjs";
 import AppDataSource from "../../data-source";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import jwt from "jsonwebtoken";
 import { IEmployeeLogin } from "../../interfaces/user/empoyee.Interface";
 import { Employee } from "../../entities/employeeEntity";

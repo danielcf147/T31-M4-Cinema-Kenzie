@@ -3,7 +3,7 @@ import {
   createCategoryMovieController,
   getMovieCategoriesController,
   getMovieCategoryByIdController,
-} from "../../controllers/CategoryMovie/categoryMovie.Controller";
+} from "../../controllers/categoryMovies/categoryMovie.Controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";

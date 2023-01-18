@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Employee } from "../../entities/employeeEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 
 const deleteEmployeeService = async (employeeId: string) => {
   const employeeRepository = AppDataSource.getRepository(Employee);

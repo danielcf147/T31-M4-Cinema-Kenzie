@@ -1,10 +1,10 @@
 import AppDataSource from "../../data-source";
 import { CategoryFood } from "../../entities/categoryFoodEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import {
   CategoryProduct,
   CategoryProductCreate,
-} from "./../../interfaces/category/categoryFood.interface";
+} from "../../interfaces/category/categoryFood.interface";
 export async function createProductCategoryService(
   category: CategoryProductCreate
 ): Promise<CategoryProduct> {

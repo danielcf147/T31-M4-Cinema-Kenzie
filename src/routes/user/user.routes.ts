@@ -4,7 +4,7 @@ import {
   createUserController,
   deleteUserController,
   updateUserController,
-} from "../../controllers/user.controllers";
+} from "../../controllers/users/user.controllers";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
 import isAdmOrSameUserMiddleware from "../../middlewares/user/isAdm.sameUser.middleware";

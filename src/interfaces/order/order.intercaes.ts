@@ -1,4 +1,4 @@
-import { Product } from "./products/product.Interface";
+import { Product } from "../products/product.Interface";
 
 export interface Order {
   id: number;
@@ -21,4 +21,3 @@ export interface OrderCreate {
 export interface OrderUpdate {
   status: "Completed" | "Cancelled";
 }
-

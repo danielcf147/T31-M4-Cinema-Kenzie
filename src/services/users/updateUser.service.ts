@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/userEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { IUser, IUserUpdate } from "../../interfaces/user/users.Interfaces";
 import { userResponse } from "../../serializers/users/users.serializers";
 

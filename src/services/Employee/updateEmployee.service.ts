@@ -1,6 +1,6 @@
 import { Employee } from "../../entities/employeeEntity";
 import AppDataSource from "../../data-source";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { employeeWithoutPasswordSerializer } from "../../serializers/employee.serializer";
 import {
   EmployeeUpdate as IEmployeeUpdate,

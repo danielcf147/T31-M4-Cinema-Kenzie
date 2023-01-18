@@ -1,7 +1,7 @@
 import AppDataSource from "../../data-source";
 import { CategoryMovie } from "../../entities/categoryMoviesEntity";
 import { Movie } from "../../entities/moviesEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import {
   IMovie,
   MovieRegisters,

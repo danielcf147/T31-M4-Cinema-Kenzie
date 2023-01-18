@@ -3,7 +3,7 @@ import {
   createProductCategoryController,
   getProductCategoryByIdController,
   getProductCategoryController,
-} from "../../controllers/CategoryProducts/CategoryProducts.Controllers";
+} from "../../controllers/categoryProducts/CategoryProducts.Controllers";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";

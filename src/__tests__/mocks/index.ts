@@ -3,7 +3,7 @@ import { CategoryMovieCreate } from "../../interfaces/category/categoryMovie.Int
 import { MovieRegisters } from "../../interfaces/movie/movies.Interfaces";
 import { RoomCreate } from "../../interfaces/movie/rooms.Interfaces";
 
-import { OrderCreate } from "../../interfaces/order.intercaes";
+import { OrderCreate } from "../../interfaces/order/order.intercaes";
 
 import { TicketCreate } from "../../interfaces/movie/tickets.Interface";
 
@@ -175,7 +175,7 @@ export const mockedRoomCreate3: RoomCreate = {
 export const mockedOrderCreate: OrderCreate = {
   food: [
     {
-      id: '',
+      id: "",
       total: 2,
     },
   ],
@@ -185,12 +185,12 @@ export const mockedOrderCreate: OrderCreate = {
 export const mockedOrderCreate2: OrderCreate = {
   food: [
     {
-      id: '',
+      id: "",
       total: 2,
     },
   ],
   status: "StandBy",
-}
+};
 export const mockedTicketCreate: TicketCreate = {
   movie_id: "",
   room_id: "",

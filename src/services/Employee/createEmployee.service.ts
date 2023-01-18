@@ -4,7 +4,7 @@ import {
   EmployeeRegister as IEmployeeRegister,
   Employee as IEmployee,
 } from "../../interfaces/user/empoyee.Interface";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { employeeWithoutPasswordSerializer } from "../../serializers/employee.serializer";
 
 const createEmployeeService = async (
