@@ -16,9 +16,10 @@ yarn dev
 ````
 <br> 
 # **Sobre as rotas**
+
+
 ````
 Rotas User:
-````
 POST: /user - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
 GET: /user
 PATCH: /user/:id - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
