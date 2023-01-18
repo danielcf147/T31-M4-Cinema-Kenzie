@@ -24,12 +24,21 @@ export async function createTicketsService(ticket: TicketCreate) {
     throw new AppError("Room not found", 404);
   }
 
+  if (findRoom.available_seats === 0) {
+    throw new AppError("Full room", 404);
+  }
+
   const newTicket = ticketRepository.create({
     movie: findMovie,
     room: findRoom,
   });
 
   await ticketRepository.save(newTicket);
+
+  await roomRepository.save({
+    ...findRoom,
+    available_seats: findRoom.available_seats - 1,
+  });
 
   return newTicket;
 }
