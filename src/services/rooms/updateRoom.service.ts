@@ -2,9 +2,17 @@ import AppDataSource from "../../data-source";
 import { Movie } from "../../entities/moviesEntity";
 import { Room } from "../../entities/roomsEntity";
 import { AppError } from "../../error";
-import { IRoomUpdate } from "../../interfaces/movie/rooms.Interfaces";
+import {
+  IRoomUpdate,
+  IRoomUpdateResponse,
+  IRoomUpdateMovieResponse,
+  IRoomUpdate2,
+} from "../../interfaces/movie/rooms.Interfaces";
 
-const updateRoomService = async (roomId: string, data: IRoomUpdate) => {
+const updateRoomService = async (
+  roomId: string,
+  data: IRoomUpdate
+): Promise<IRoomUpdateResponse | IRoomUpdateMovieResponse> => {
   const roomRepository = AppDataSource.getRepository(Room);
   const movieRepository = AppDataSource.getRepository(Movie);
 
@@ -25,9 +33,6 @@ const updateRoomService = async (roomId: string, data: IRoomUpdate) => {
       throw new AppError("Movie not found", 404);
     }
 
-    const ob: any = data;
-    ob.movie = movie;
-
     const updatedRoom = roomRepository.create({
       ...room,
       ...data,
@@ -38,7 +43,7 @@ const updateRoomService = async (roomId: string, data: IRoomUpdate) => {
     return updatedRoom;
   }
 
-  const auxData: any = data;
+  const auxData: IRoomUpdate2 = data;
   const updatedRoom = roomRepository.create({
     ...room,
     ...auxData,
