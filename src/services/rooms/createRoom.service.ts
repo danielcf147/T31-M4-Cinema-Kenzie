@@ -5,7 +5,10 @@ import { Room } from "../../entities/roomsEntity";
 import { AppError } from "../../error";
 import { RoomCreate, Rooms } from "../../interfaces/movie/rooms.Interfaces";
 
-export async function createRoomService(employerId: string, room: RoomCreate) {
+export async function createRoomService(
+  employerId: string,
+  room: RoomCreate
+): Promise<Room> {
   const roomRepository = AppDataSource.getRepository(Room);
   const employerRepository = AppDataSource.getRepository(Employee);
   const movieRepository = AppDataSource.getRepository(Movie);

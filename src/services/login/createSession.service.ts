@@ -5,7 +5,7 @@ import { AppError } from "../../error";
 import jwt from "jsonwebtoken";
 import { IUserLogin } from "../../interfaces/user/users.Interfaces";
 
-const createSessionService = async (data: IUserLogin) => {
+const createSessionService = async (data: IUserLogin): Promise<string> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({

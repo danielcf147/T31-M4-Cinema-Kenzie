@@ -1,7 +1,9 @@
 import AppDataSource from "../../data-source";
 import { CategoryMovie } from "../../entities/categoryMoviesEntity";
 
-export async function getMovieCategoryByIdService(id: string) {
+export async function getMovieCategoryByIdService(
+  id: string
+): Promise<CategoryMovie> {
   const categoryRepository = AppDataSource.getRepository(CategoryMovie);
 
   const categoryQueryBuilder =

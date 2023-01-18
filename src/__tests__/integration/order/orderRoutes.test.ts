@@ -8,6 +8,8 @@ import {
   mockedOrderCreate,
   mockedOrderCreate2,
   mockedUser,
+  mockedProductCreate,
+  mockedCategoryProductCreate,
   mockedUserLogin,
 } from "../../mocks";
 
@@ -40,12 +42,26 @@ describe("/order", () => {
       .post("/login/employer")
       .send(mockedAdminLogin);
 
-    const userResponse = await request(app)
-      .get("/user")
+    await request(app)
+      .post("/categories/products")
+      .send(mockedCategoryProductCreate)
       .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
 
-    const userId = userResponse.body[0].id;
-    mockedOrderCreate.user = userId;
+    const productCategoryResponse = await request(app).get(
+      "/categories/products"
+    );
+    const productCategoryId = productCategoryResponse.body[0].id;
+    mockedProductCreate.categoryFoodId = productCategoryId;
+
+    await request(app)
+      .post("/products")
+      .send(mockedProductCreate)
+      .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
+
+    const productResponse = await request(app).get("/products");
+
+    const productId = productResponse.body[0].id;
+    mockedOrderCreate.food[0].id = productId;
 
     const response = await request(app)
       .post("/order")
@@ -54,14 +70,14 @@ describe("/order", () => {
 
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("status");
-    expect(response.body).toHaveProperty("total");
     expect(response.body).toHaveProperty("food");
     expect(response.body).toHaveProperty("user");
+    expect(response.body.food[0]).toHaveProperty("id");
     expect(response.body.food[0]).toHaveProperty("name");
     expect(response.body.food[0]).toHaveProperty("stock");
     expect(response.body.food[0]).toHaveProperty("price");
     expect(response.body.food[0].stock).toBeGreaterThan(0);
-    expect(response.body.food[0].name).toEqual("pipoca");
+    expect(response.body.food[0].name).toEqual("tic tac");
     expect(response.status).toBe(201);
   });
 
@@ -70,12 +86,10 @@ describe("/order", () => {
       .post("/login/employer")
       .send(mockedAdminLogin);
 
-    const employeeResponse = await request(app)
-      .get("/employee")
-      .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
+    const productResponse = await request(app).get("/products");
 
-    const employeeId = employeeResponse.body[0].id;
-    mockedOrderCreate2.employee = employeeId;
+    const productId = productResponse.body[0].id;
+    mockedOrderCreate2.food[0].id = productId;
 
     const response = await request(app)
       .post("/order")
@@ -84,14 +98,14 @@ describe("/order", () => {
 
     expect(response.body).toHaveProperty("id");
     expect(response.body).toHaveProperty("status");
-    expect(response.body).toHaveProperty("total");
     expect(response.body).toHaveProperty("food");
     expect(response.body).toHaveProperty("employee");
+    expect(response.body.food[0]).toHaveProperty("id");
     expect(response.body.food[0]).toHaveProperty("name");
     expect(response.body.food[0]).toHaveProperty("stock");
     expect(response.body.food[0]).toHaveProperty("price");
     expect(response.body.food[0].stock).toBeGreaterThan(0);
-    expect(response.body.food[0].name).toEqual("pipoca");
+    expect(response.body.food[0].name).toEqual("tic tac");
     expect(response.status).toBe(201);
   });
 
@@ -100,42 +114,15 @@ describe("/order", () => {
       .post("/login/employer")
       .send(mockedAdminLogin);
 
-    const employeeResponse = await request(app)
-      .get("/employee")
-      .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
+    const productResponse = await request(app).get("/products");
 
-    const employeeId = employeeResponse.body[0].id;
-    mockedOrderCreate2.employee = employeeId;
+    const productId = productResponse.body[0].id;
+    mockedOrderCreate2.food[0].id = productId;
 
     const response = await request(app).post("/order").send(mockedOrderCreate2);
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
-  });
-
-  test("POST /order -  Should not be able to create a order with ID that is not yours", async () => {
-    const userLoginResponse = await request(app)
-      .post("/login")
-      .send(mockedUserLogin);
-
-    const admLoginResponse = await request(app)
-      .post("/login/employer")
-      .send(mockedAdminLogin);
-
-    const employeeResponse = await request(app)
-      .get("/employee")
-      .set("Authorization", `Bearer ${admLoginResponse.body.token}`);
-
-    const employeeId = employeeResponse.body[0].id;
-    mockedOrderCreate2.employee = employeeId;
-
-    const response = await request(app)
-      .post("/order")
-      .send(mockedOrderCreate2)
-      .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
-
-    expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(403);
   });
 
   test("GET /order -  should  be able to list all orders", async () => {
@@ -149,7 +136,6 @@ describe("/order", () => {
 
     expect(response.body[0]).toHaveProperty("id");
     expect(response.body[0]).toHaveProperty("status");
-    expect(response.body[0]).toHaveProperty("total");
     expect(response.body[0]).toHaveProperty("employee");
     expect(response.body[0]).toHaveProperty("user");
     expect(response.body[0].user).toHaveProperty("id");

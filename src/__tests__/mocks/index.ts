@@ -173,31 +173,24 @@ export const mockedRoomCreate3: RoomCreate = {
 };
 
 export const mockedOrderCreate: OrderCreate = {
-  user: "",
   food: [
     {
-      name: "pipoca",
-      price: 10,
-      stock: 100,
+      id: '',
+      total: 2,
     },
   ],
   status: "StandBy",
-  total: 2,
 };
 
 export const mockedOrderCreate2: OrderCreate = {
-  employee: "",
   food: [
     {
-      name: "pipoca",
-      price: 10,
-      stock: 100,
+      id: '',
+      total: 2,
     },
   ],
   status: "StandBy",
-  total: 2,
-};
-
+}
 export const mockedTicketCreate: TicketCreate = {
   movie_id: "",
   room_id: "",

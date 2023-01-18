@@ -10,6 +10,7 @@ const roomUpdateSerializer: SchemaOf<IRoomUpdate> = yup.object().shape({
   is3D: yup.boolean().notRequired(),
   seats: yup.number().notRequired(),
   movie: yup.string().notRequired(),
+  available_seats: yup.number().notRequired(),
 });
 
 const createRoomSerializer: SchemaOf<RoomCreate> = yup.object().shape({
