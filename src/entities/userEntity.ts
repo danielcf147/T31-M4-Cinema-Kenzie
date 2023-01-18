@@ -49,8 +49,8 @@ export class User {
   @OneToMany(() => Room, (room) => room.user)
   room: Room[];
 
-  @OneToOne(() => Order, (order) => order.user)
-  order: Order;
+  @OneToMany(() => Order, (order) => order.user)
+  order: Order[];
 
   @BeforeInsert()
   hashPassword() {
