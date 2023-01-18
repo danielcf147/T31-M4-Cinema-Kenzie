@@ -49,6 +49,7 @@ POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(
 GET: /movies
 GET: /movies/:id 
 GET: /movies/:categoryId
+DELETE: /movies/:id - {Necessario token de autenticação e acessada apenas por adm}
 ````
 ````
 Rotas Rooms:
