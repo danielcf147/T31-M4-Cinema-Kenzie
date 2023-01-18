@@ -1,4 +1,4 @@
-import updateEmployeeService from "../../services/Employee/updateEmployee.service";
+import updateEmployeeService from "../../services/employee/updateEmployee.service";
 import { Request, Response } from "express";
 
 const updateEmployeeController = async (

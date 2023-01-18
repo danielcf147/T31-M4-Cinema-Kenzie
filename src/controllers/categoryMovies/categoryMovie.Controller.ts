@@ -3,9 +3,9 @@ import {
   CategoryMovieCreate,
 } from "../../interfaces/category/categoryMovie.Interface";
 import { Request, Response } from "express";
-import { createCategoryMovieService } from "../../services/CategoryMovie/createCategoryMovie.Service";
-import { getMovieCategoriesService } from "../../services/CategoryMovie/getMovieCategories.Service";
-import { getMovieCategoryByIdService } from "../../services/CategoryMovie/getMovieCategoryById.Service";
+import { createCategoryMovieService } from "../../services/categoryMovie/createCategoryMovie.Service";
+import { getMovieCategoriesService } from "../../services/categoryMovie/getMovieCategories.Service";
+import { getMovieCategoryByIdService } from "../../services/categoryMovie/getMovieCategoryById.Service";
 
 export async function createCategoryMovieController(
   req: Request,

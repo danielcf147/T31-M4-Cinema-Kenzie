@@ -2,7 +2,7 @@ import { AppError } from "../../errors/index";
 import {
   Product,
   ProductCreate,
-} from "./../../interfaces/products/product.Interface";
+} from "../../interfaces/products/product.Interface";
 import AppDataSource from "../../data-source";
 import { Food } from "../../entities/foodEntity";
 import { CategoryFood } from "../../entities/categoryFoodEntity";
