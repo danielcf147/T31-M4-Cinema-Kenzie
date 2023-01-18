@@ -8,9 +8,8 @@ import {
 const orderProductCreateSerializer: SchemaOf<OrderProductCreate> = yup
   .object()
   .shape({
-    name: yup.string().required(),
-    price: yup.number().required(),
-    stock: yup.number().required(),
+    id: yup.string().required(),
+    total: yup.number().required(),
   });
 
 const orderCreateSerializer: SchemaOf<OrderCreate> = yup.object().shape({
