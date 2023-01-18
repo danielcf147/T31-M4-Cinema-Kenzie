@@ -22,15 +22,15 @@ yarn dev
 Rotas User:
 POST: /user - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
 GET: /user
-PATCH: /user/:id - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
-DELETE: /user/:id - {Parametro: isActive(tipo boolean)}
+PATCH: /user/:id - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}{Necessario token de autenticação}
+DELETE: /user/:id - {Parametro: isActive(tipo boolean)}{Necessario token de autenticação}
 ````
 ````
 Rotas Employee:
 POST: /employee - {Parametros: name(tipo string), registration(tipo string), age(tipo number), isAdm(tipo boolean), password(tipo string)}
-GET: /employee
-PATCH: /employee/:id - {Parametros: name(tipo string), registration(tipo string), age(tipo number), isAdm(tipo boolean), password(tipo string)}
-DELETE: /employee/:id - {Parametro: isActive(tipo boolean)}
+GET: /employee - {Necessario token de autenticação e acessada apenas por adm}
+PATCH: /employee/:id - {Parametros: name(tipo string), registration(tipo string), age(tipo number), isAdm(tipo boolean), password(tipo string)}{Necessario token de autenticação e acessada apenas por adm}
+DELETE: /employee/:id - {Parametro: isActive(tipo boolean)}{Necessario token de autenticação}{Necessario token de autenticação e acessada apenas por adm}
 ````
 ````
 Rotas Login:
@@ -39,47 +39,47 @@ POST: /login/empolyer - {Parametros: registration(tipo string), password(tipo st
 ````
 ````
 Rotas Category Movies:
-POST: /categories/movies - {Parametro: name(tipo string)}
+POST: /categories/movies - {Parametro: name(tipo string)}{Necessario token de autenticação e acessada apenas por adm}
 GET: /categories/movies
 GET: /categories/movies/:id
 ````
 ````
 Rotas Movies:
-POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(tipo string), release_date(tipo string), categoryMovie_id(tipo string)}
+POST: /movies - {Parametros: name(tipo string), director(tipo string), synopsis(tipo string), release_date(tipo string), categoryMovie_id(tipo string)}{Necessario token de autenticação e acessada apenas por adm}
 GET: /movies
 GET: /movies/:id 
 GET: /movies/:categoryId
 ````
 ````
 Rotas Rooms:
-POST: /rooms - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+POST: /rooms - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}{Necessario token de autenticação e acessada apenas por adm}
 GET: /rooms 
-PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}{Necessario token de autenticação e acessada apenas por adm}
 ````
 ````
 Rotas Category Products:
-POST: /categories/products - {Parametros: name(tipo string)}
+POST: /categories/products - {Parametros: name(tipo string)}{Necessario token de autenticação e acessada apenas por adm}
 GET: /categories/products
 GET: /categories/products/:id
 ````
 ````
 Rotas Product:
-POST: /products - {Parametros: name(tipo string), price(tipo number), stock(tipo number), categoryFoodId(tipo string)}
+POST: /products - {Parametros: name(tipo string), price(tipo number), stock(tipo number), categoryFoodId(tipo string)}{Necessario token de autenticação e acessada apenas por adm}
 GET: /products
 GET: /products/:id
 GET: /products/category/:id
-PATCH: /products/:id - {Parametros: price(tipo number), stock(tipo number)}
-DELETE: /products/:id
+PATCH: /products/:id - {Parametros: price(tipo number), stock(tipo number)}{Necessario token de autenticação e acessada apenas por adm}
+DELETE: /products/:id - {Necessario token de autenticação e acessada apenas por adm}
 ````
 ````
 Rotas Order:
-POST: /order - {Parametros: status(tipo string, passando StandBy como parametro), food(tipo array passando um objeto com as keys de id(tipo string) e total(tipo number)}
-GET: /order
+POST: /order - {Parametros: status(tipo string, passando StandBy como parametro), food(tipo array passando um objeto com as keys de id(tipo string) e total(tipo number)}{Necessario token de autenticação}
+GET: /order - {Necessario token de autenticação e acessada apenas por adm ou employee}
 ````
 ````
 Rotas Tickets:
-POST: /tickets - {Parametros: room_id(tipo string), movie_id(tipo string)}
-GET: /tickets
+POST: /tickets - {Parametros: room_id(tipo string), movie_id(tipo string)}{Necessario token de autenticação}
+GET: /tickets - {Necessario token de autenticação e acessada apenas por adm ou employee}
 ````
 <br>
 
