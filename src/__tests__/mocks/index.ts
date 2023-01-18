@@ -172,7 +172,6 @@ export const mockedRoomCreate3: RoomCreate = {
   movie_id: "harry potter 3",
 };
 
-
 export const mockedOrderCreate: OrderCreate = {
   user: "",
   food: [
@@ -197,9 +196,9 @@ export const mockedOrderCreate2: OrderCreate = {
   ],
   status: "StandBy",
   total: 2,
+};
 
 export const mockedTicketCreate: TicketCreate = {
   movie_id: "",
   room_id: "",
-
 };
