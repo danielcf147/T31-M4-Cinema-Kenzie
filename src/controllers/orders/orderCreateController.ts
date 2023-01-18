@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { OrderCreate } from "../../interfaces/order.intercaes";
+import { OrderCreate } from "../../interfaces/order/order.intercaes";
 import { createOrderService } from "../../services/orders/createOrder.service";
 
 export async function createOrderController(req: Request, res: Response) {

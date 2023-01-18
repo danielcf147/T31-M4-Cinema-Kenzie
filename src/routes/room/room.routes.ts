@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { CreateRoomController } from "../../controllers/room/createRoom.controller";
-import { getAllRoomsController } from "../../controllers/room/getRoom.controller";
-import { updateRoomController } from "../../controllers/room/updateRoom.controller";
+import { CreateRoomController } from "../../controllers/rooms/createRoom.controller";
+import { getAllRoomsController } from "../../controllers/rooms/getRoom.controller";
+import { updateRoomController } from "../../controllers/rooms/updateRoom.controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";

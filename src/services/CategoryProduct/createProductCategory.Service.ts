@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { CategoryFood } from "../../entities/categoryFoodEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import {
   CategoryProduct,
   CategoryProductCreate,

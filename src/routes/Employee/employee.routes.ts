@@ -1,8 +1,8 @@
 import { Router } from "express";
-import createEmployeeController from "../../controllers/Employee/createEmployee.controller";
-import listEmployeeController from "../../controllers/Employee/listEmployee.controller";
-import updateEmployeeController from "../../controllers/Employee/updateEmployee.controller";
-import deleteEmployeeController from "../../controllers/Employee/deleteEmployee.controller";
+import createEmployeeController from "../../controllers/employees/updateEmployee.controller";
+import listEmployeeController from "../../controllers/employees/updateEmployee.controller";
+import updateEmployeeController from "../../controllers/employees/updateEmployee.controller";
+import deleteEmployeeController from "../../controllers/employees/updateEmployee.controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import {
   employeeSerializer,

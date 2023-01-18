@@ -6,7 +6,7 @@ import {
   getProductsByCategoryIdController,
   getProductsController,
   updateProductByIdController,
-} from "../../controllers/Products/products.Controllers";
+} from "../../controllers/products/products.Controllers";
 import ensureIsAdm from "../../middlewares/Employee/ensureIsAdm.middleware";
 import ensureAuthMiddleware from "../../middlewares/ensureAuthToken.middleware";
 
