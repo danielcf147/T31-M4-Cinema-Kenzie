@@ -5,7 +5,9 @@ import jwt from "jsonwebtoken";
 import { IEmployeeLogin } from "../../interfaces/user/empoyee.Interface";
 import { Employee } from "../../entities/employeeEntity";
 
-const createEmployeSessionService = async (data: IEmployeeLogin) => {
+const createEmployeSessionService = async (
+  data: IEmployeeLogin
+): Promise<string> => {
   const employeeRepository = AppDataSource.getRepository(Employee);
 
   const employee = await employeeRepository.findOneBy({
