@@ -83,6 +83,14 @@ GET: /tickets - {Necessario token de autenticação e acessada apenas por adm ou
 ````
 <br>
 
+# **Insomnia URL**
+
+````
+https://raw.githubusercontent.com/danielcf147/T31-M4-Cinema-Kenzie/master/Insomnia.json?token=GHSAT0AAAAAAB3UQP5ZOLONUOWYDZKLBX2EY6INXHA
+````
+
+<br>
+
 # **Sobre os testes**
 
 Essa aplicação possui testes, que serão utilizados para validar, se todas as regras de negócio foram aplicadas de maneira correta.
