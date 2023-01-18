@@ -1,4 +1,4 @@
-import deleteEmployeeService from "../../services/Employee/deleteEmployee.service";
+import deleteEmployeeService from "../../services/employee/deleteEmployee.service";
 import { Request, Response } from "express";
 
 const deleteEmployeeController = async (

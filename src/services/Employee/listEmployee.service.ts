@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Employee } from "../../entities/employeeEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { Employee as IEmployee } from "../../interfaces/user/empoyee.Interface";
 
 const listEmployeeService = async (isAdm: boolean): Promise<IEmployee[]> => {

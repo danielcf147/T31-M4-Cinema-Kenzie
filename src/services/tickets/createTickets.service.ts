@@ -2,10 +2,12 @@ import AppDataSource from "../../data-source";
 import { Movie } from "../../entities/moviesEntity";
 import { Room } from "../../entities/roomsEntity";
 import { Ticket } from "../../entities/ticketsEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import { TicketCreate } from "../../interfaces/movie/tickets.Interface";
 
-export async function createTicketsService(ticket: TicketCreate) {
+export async function createTicketsService(
+  ticket: TicketCreate
+): Promise<Ticket> {
   const ticketRepository = AppDataSource.getRepository(Ticket);
 
   const movieRepository = AppDataSource.getRepository(Movie);

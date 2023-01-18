@@ -1,4 +1,4 @@
-import { Product } from "./products/product.Interface";
+import { Product } from "../products/product.Interface";
 
 export interface Order {
   id: number;
@@ -9,17 +9,13 @@ export interface Order {
 }
 
 export interface OrderProductCreate {
-  name: string;
-  price: number;
-  stock: number;
+  id: string;
+  total: number;
 }
 
 export interface OrderCreate {
-  employee?: string;
-  user?: string;
   status: string;
   food: OrderProductCreate[];
-  total: number;
 }
 
 export interface OrderUpdate {

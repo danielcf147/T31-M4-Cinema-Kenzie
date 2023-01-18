@@ -1,50 +1,87 @@
-import { EntityTarget, ObjectLiteral } from "typeorm";
+import { Food } from "./../../entities/foodEntity";
+import { ObjectLiteral } from "typeorm";
 import AppDataSource from "../../data-source";
 import { Employee } from "../../entities/employeeEntity";
 import { Order } from "../../entities/orderEntity";
 import { User } from "../../entities/userEntity";
-import { AppError } from "../../error";
-import { OrderCreate } from "../../interfaces/order.intercaes";
+import { AppError } from "../../errors";
+import {
+  OrderCreate,
+  OrderProductCreate,
+} from "../../interfaces/order/order.intercaes";
 
 export async function createEmployeeOrUser(
-  entity: EntityTarget<ObjectLiteral>,
   id: string
-) {
-  const entityRepository = AppDataSource.getRepository(entity);
-  const findEntity = await entityRepository.findOneBy({ id });
+): Promise<Array<ObjectLiteral | string>> {
+  const employeeRepository = AppDataSource.getRepository(Employee);
+  const findEmployee = await employeeRepository.findOneBy({ id });
 
-  if (!findEntity) {
-    throw new AppError("ID not found", 404);
+  if (findEmployee) {
+    return [findEmployee, "employee"];
   }
-  return findEntity;
+
+  const userRepository = AppDataSource.getRepository(User);
+  const findUser = await userRepository.findOneBy({ id });
+
+  if (findUser) {
+    return [findUser, "user"];
+  }
+
+  throw new AppError("ID not found", 404);
 }
 
-export async function createOrderService(order: any, tokenId: string) {
-  if (order.employee !== tokenId && order.user !== tokenId) {
-    throw new AppError("Must be user same user ID to create order", 403);
+export async function productValidate(products: OrderProductCreate[]) {
+  const productsRepository = AppDataSource.getRepository(Food);
+  const foods: Food[] = [];
+
+  for await (const { id, total } of products) {
+    const validProduct = await productsRepository.findOneBy({ id: id });
+
+    if (!validProduct) {
+      throw new AppError("Product not found", 404);
+    }
+
+    if (validProduct.stock === 0) {
+      throw new AppError("Stock Empty", 403);
+    }
+
+    if (validProduct.stock < total) {
+      throw new AppError("insufficient stock products", 403);
+    }
+
+    const stock = validProduct.stock - total;
+    validProduct.stock = stock;
+
+    foods.push(await productsRepository.save(validProduct));
   }
+
+  return foods;
+}
+
+export async function createOrderService(
+  { food, status }: OrderCreate,
+  tokenId: string
+): Promise<Order> {
   const orderRepository = AppDataSource.getRepository(Order);
 
-  let entity: User | Employee;
-  // let newOrder: Order;
-  let newOrder: any;
-  if (order.user) {
-    entity = (await createEmployeeOrUser(User, order.user)) as User;
+  let newOrder: Order;
 
-    const userId = entity.id;
-    const newUserOrder = { ...order, user: userId };
+  let [entity, userType] = await createEmployeeOrUser(tokenId);
+  const products = await productValidate(food);
 
-    newOrder = orderRepository.create(newUserOrder);
+  if (userType === "user") {
+    newOrder = orderRepository.create({
+      status,
+      user: entity as User,
+      food: products,
+    });
   } else {
-    entity = (await createEmployeeOrUser(Employee, order.employee)) as Employee;
-
-    const employeeId = entity.id;
-    const newEmployeeOrder = { ...order, employee_id: employeeId };
-
-    newOrder = orderRepository.create(newEmployeeOrder);
+    newOrder = orderRepository.create({
+      status,
+      employee: entity as Employee,
+      food: products,
+    });
   }
 
-  await orderRepository.save(newOrder);
-
-  return newOrder;
+  return await orderRepository.save(newOrder);
 }

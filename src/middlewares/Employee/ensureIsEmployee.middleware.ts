@@ -1,7 +1,7 @@
 import { Employee } from "../../entities/employeeEntity";
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 import AppDataSource from "../../data-source";
 
 const ensureIsEmployee = async (

@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   createSessionController,
   employerSessionController,
-} from "../../controllers/session/session.controller";
+} from "../../controllers/sessions/session.controller";
 import dataIsValid from "../../middlewares/dataIsValid.middleware";
 import employerLoginSerializer from "../../serializers/login/employerLogin.serializer";
 import userLoginSerializer from "../../serializers/login/userLogin.serializer";
