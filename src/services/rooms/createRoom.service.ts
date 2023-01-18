@@ -32,6 +32,7 @@ export async function createRoomService(employerId: string, room: RoomCreate) {
 
   const newRoom = roomRepository.create({
     ...room,
+    available_seats: room.seats,
     movie: [movie],
     employee: [employer],
   });
