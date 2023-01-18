@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Movie } from "../../entities/moviesEntity";
-import { AppError } from "../../error";
+import { AppError } from "../../errors";
 
 export async function deleteMovieService(id: string) {
   const movieRepository = AppDataSource.getRepository(Movie);

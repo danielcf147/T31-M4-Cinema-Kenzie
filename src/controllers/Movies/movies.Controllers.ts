@@ -5,7 +5,7 @@ import { createMoviesService } from "../../services/movies/createMovie.Service";
 import { getAllMoviesService } from "../../services/movies/getAllMovies.Service";
 import { getMovieByCategoryService } from "../../services/movies/getMovieByCategory.Service";
 import { getMovieByIdService } from "../../services/movies/getMovieById.Service";
-import { deleteMovieService } from "../../services/Movies/deleteMovie.service";
+import { deleteMovieService } from "../../services/movies/deleteMovie.service";
 
 export async function createMovieController(req: Request, res: Response) {
   const movie: MovieRegisters = req.body;
