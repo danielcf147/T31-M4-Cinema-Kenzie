@@ -16,7 +16,7 @@ yarn dev
 ````
 <br> 
 # **Sobre as rotas**
-
+````
 Rotas User:
 ````
 POST: /user - {Parametros: name(tipo string), email(tipo string), age(tipo number), cpf(tipo string), password(tipo string)}
@@ -37,10 +37,10 @@ POST: /login - {Parametros: email(tipo string), password(tipo string)}
 POST: /login/empolyer - {Parametros: registration(tipo string), password(tipo string)}
 ````
 ````
-Rotas Rooms:
-POST: /rooms - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
-GET: /rooms 
-PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+Rotas Category Movies:
+POST: /categories/movies - {Parametro: name(tipo string)}
+GET: /categories/movies
+GET: /categories/movies/:id
 ````
 ````
 Rotas Movies:
@@ -50,10 +50,16 @@ GET: /movies/:id
 GET: /movies/:categoryId
 ````
 ````
-Rotas Category Movies:
-POST: /categories/movies - {Parametro: name(tipo string)}
-GET: /categories/movies
-GET: /categories/movies/:id
+Rotas Rooms:
+POST: /rooms - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+GET: /rooms 
+PATCH: /rooms/:id - {Parametros: name(tipo string), movie_id(tipo string), is3D(tipo boolean), seats(tipo number)}
+````
+````
+Rotas Category Products:
+POST: /categories/products - {Parametros: name(tipo string)}
+GET: /categories/products
+GET: /categories/products/:id
 ````
 ````
 Rotas Product:
@@ -65,10 +71,14 @@ PATCH: /products/:id - {Parametros: price(tipo number), stock(tipo number)}
 DELETE: /products/:id
 ````
 ````
-Rotas Category Products:
-POST: /categories/products - {Parametros: name(tipo string)}
-GET: /categories/products
-GET: /categories/products/:id
+Rotas Order:
+POST: /order - {Parametros: status(tipo string, passando StandBy como parametro), food(tipo array passando um objeto com as keys de id(tipo string) e total(tipo number)}
+GET: /order
+````
+````
+Rotas Tickets:
+POST: /tickets - {Parametros: room_id(tipo string), movie_id(tipo string)}
+GET: /tickets
 ````
 <br>
 
