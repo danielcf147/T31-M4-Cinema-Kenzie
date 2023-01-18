@@ -2,6 +2,11 @@ import { CategoryProductCreate } from "../../interfaces/category/categoryFood.in
 import { CategoryMovieCreate } from "../../interfaces/category/categoryMovie.Interface";
 import { MovieRegisters } from "../../interfaces/movie/movies.Interfaces";
 import { RoomCreate } from "../../interfaces/movie/rooms.Interfaces";
+
+import { OrderCreate } from "../../interfaces/order.intercaes";
+
+import { TicketCreate } from "../../interfaces/movie/tickets.Interface";
+
 import { ProductCreate } from "../../interfaces/products/product.Interface";
 import {
   EmployeeRegister as IEmployeeRegister,
@@ -150,7 +155,7 @@ export const mockedRoomCreate: RoomCreate = {
   name: "1",
   is3D: true,
   seats: 200,
-  movie_id: "harry potter",
+  movie_id: "",
 };
 
 export const mockedRoomCreate2: RoomCreate = {
@@ -165,4 +170,35 @@ export const mockedRoomCreate3: RoomCreate = {
   is3D: true,
   seats: 200,
   movie_id: "harry potter 3",
+};
+
+export const mockedOrderCreate: OrderCreate = {
+  user: "",
+  food: [
+    {
+      name: "pipoca",
+      price: 10,
+      stock: 100,
+    },
+  ],
+  status: "StandBy",
+  total: 2,
+};
+
+export const mockedOrderCreate2: OrderCreate = {
+  employee: "",
+  food: [
+    {
+      name: "pipoca",
+      price: 10,
+      stock: 100,
+    },
+  ],
+  status: "StandBy",
+  total: 2,
+};
+
+export const mockedTicketCreate: TicketCreate = {
+  movie_id: "",
+  room_id: "",
 };

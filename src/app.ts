@@ -13,6 +13,7 @@ import { categoryProductsRoutes } from "./routes/CategoryProducts/categoryProduc
 import userRoutes from "./routes/user/user.routes";
 import sessionRoute from "./routes/session/createUserSession.routes";
 import { orderRoutes } from "./routes/orders/orders.routes";
+import { ticketRoute } from "./routes/tickets/tickets.routes";
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/categories/movies", categoryMovieRouters);
 app.use("/products", productsRouters)
 app.use("/categories/products", categoryProductsRoutes)
 app.use("/order", orderRoutes)
+app.use("/tickets", ticketRoute)
 
 app.use(handleError);
 

@@ -5,6 +5,8 @@ import app from "../../../app";
 import {
   mockedAdmin,
   mockedAdminLogin,
+  mockedCategoryMovieCreate,
+  mockedMovieCreate,
   mockedRoomCreate,
   mockedRoomCreate2,
   mockedRoomCreate3,
@@ -14,7 +16,7 @@ import {
   mockedUserLogin2,
 } from "../../mocks";
 
-describe("/movies", () => {
+describe("/rooms", () => {
   let connection: DataSource;
 
   beforeAll(async () => {
@@ -38,6 +40,24 @@ describe("/movies", () => {
       .post("/login/employer")
       .send(mockedAdminLogin);
 
+    const categoryReponse = await request(app)
+      .post("/categories/movies")
+      .send(mockedCategoryMovieCreate)
+      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+
+    const categoryMovie_id = categoryReponse.body.id;
+    mockedMovieCreate.categoryMovie_id = categoryMovie_id;
+
+    await request(app)
+      .post("/movies")
+      .send(mockedMovieCreate)
+      .set("Authorization", `Bearer ${adminLoginResponse.body.token}`);
+
+    const movieResponse = await request(app).get("/movies");
+
+    const movieId = movieResponse.body[0].id;
+    mockedRoomCreate.movie_id = movieId;
+
     const response = await request(app)
       .post("/rooms")
       .send(mockedRoomCreate)
@@ -47,6 +67,15 @@ describe("/movies", () => {
     expect(response.body).toHaveProperty("name");
     expect(response.body).toHaveProperty("is3D");
     expect(response.body).toHaveProperty("seats");
+    expect(response.body).toHaveProperty("movie");
+    expect(response.body.movie[0]).toHaveProperty("id");
+    expect(response.body.movie[0]).toHaveProperty("name");
+    expect(response.body.movie[0]).toHaveProperty("director");
+    expect(response.body.movie[0]).toHaveProperty("synopsis");
+    expect(response.body.movie[0]).toHaveProperty("release_date");
+    expect(response.body.employee[0]).toHaveProperty("id");
+    expect(response.body.employee[0]).toHaveProperty("name");
+    expect(response.body.employee[0]).toHaveProperty("registration");
     expect(response.body.name).toEqual("1");
     expect(response.status).toBe(201);
   });
@@ -59,11 +88,16 @@ describe("/movies", () => {
   });
 
   test("POST /rooms -  Should not be able to create a room without being adm or employee", async () => {
-    await request(app).post("/employee").send(mockedUser);
+    await request(app).post("/user").send(mockedUser);
 
     const userLoginResponse = await request(app)
       .post("/login")
       .send(mockedUserLogin);
+
+    const movieResponse = await request(app).get("/movies");
+
+    const movieId = movieResponse.body[0].id;
+    mockedRoomCreate3.movie_id = movieId;
 
     const response = await request(app)
       .post("/rooms")
@@ -96,7 +130,7 @@ describe("/movies", () => {
     expect(response.body[0]).toHaveProperty("is3D");
     expect(response.body[0]).toHaveProperty("seats");
     expect(response.body[0].name).toEqual("1");
-    expect(response.body).toHaveLength(3);
+    expect(response.body).toHaveLength(1);
     expect(response.status).toBe(200);
   });
 
@@ -148,7 +182,7 @@ describe("/movies", () => {
       .set("Authorization", `Bearer ${userLoginResponse.body.token}`);
 
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(403);
   });
 
   test("PATCH /room/:id -  should be able to update room", async () => {

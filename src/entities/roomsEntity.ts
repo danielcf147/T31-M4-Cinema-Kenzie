@@ -26,6 +26,9 @@ export class Room {
   @Column()
   seats: number;
 
+  @Column({ default: 0 })
+  available_seats: number;
+
   @ManyToMany(() => Movie, (movies) => movies.rooms)
   movie: Movie[];
 

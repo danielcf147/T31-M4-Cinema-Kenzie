@@ -19,6 +19,6 @@ export const handleError = (
     //console.error(err.message)
     return res.status(err.statusCode).json({ message: err.message });
   }
-  //console.error(err.message)
+  console.error(err);
   return res.status(500).json({ message: err.message });
 };

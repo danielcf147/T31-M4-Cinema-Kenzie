@@ -17,7 +17,7 @@ import {
   mockedUserLogin2,
 } from "../../mocks";
 
-describe("/movies", () => {
+describe("/products", () => {
   let connection: DataSource;
 
   beforeAll(async () => {
