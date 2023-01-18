@@ -7,6 +7,7 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -47,7 +48,7 @@ export class Employee {
   @JoinTable()
   rooms: Room[];
 
-  @ManyToMany(() => Order, (order) => order.employee)
+  @OneToMany(() => Order, (order) => order.employee)
   order: Order[];
 
   @BeforeInsert()
