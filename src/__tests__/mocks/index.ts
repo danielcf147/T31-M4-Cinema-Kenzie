@@ -197,7 +197,7 @@ export const mockedOrderCreate2: OrderCreate = {
   ],
   status: "StandBy",
   total: 2,
-
+}
 export const mockedTicketCreate: TicketCreate = {
   movie_id: "",
   room_id: "",

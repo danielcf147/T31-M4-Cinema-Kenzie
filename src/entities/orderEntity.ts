@@ -18,15 +18,12 @@ export class Order {
   @Column()
   status: string;
 
-  @Column()
-  total: number;
-
   @ManyToMany(() => Food, (food) => food.order)
   food: Food[];
 
-  @ManyToOne(() => User, (user) => user.order)
+  @ManyToOne(() => User, (user) => user.order, { nullable: true })
   user: User;
 
-  @ManyToOne(() => Employee, (employee) => employee.order)
+  @ManyToOne(() => Employee, (employee) => employee.order, { nullable: true })
   employee: Employee;
 }
